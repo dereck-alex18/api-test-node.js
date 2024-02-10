@@ -51,7 +51,7 @@ describe('Posts tests', () => {
       expect(res.body).to.deep.include(requestBody);
     });
 
-    it('Should create a post with no title and no body', async () => {
+    it('Should not create a post with no title and no body', async () => {
       
       const userPostsEndpoint = `${userEndpoint}/${defaultUserId}/${postsEndpoint}`;
       const requestBody = {
