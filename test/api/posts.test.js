@@ -49,7 +49,32 @@ describe('Posts tests', () => {
 
       expect(res.statusCode).to.equal(STATUS_CODE.CREATED);
       expect(res.body).to.deep.include(requestBody);
-    });  
+    });
+
+    it('Should create a post with no title and no body', async () => {
+      
+      const userPostsEndpoint = `${userEndpoint}/${defaultUserId}/${postsEndpoint}`;
+      const requestBody = {
+        title: '',
+        body: '',
+      }
+      const expectedResponse = 
+        [
+          {
+            field: "title",
+            message: "can't be blank"
+          },
+          {
+            field: "body",
+            message: "can't be blank"
+          }
+        ];
+      const res = await sendPostRequest(userPostsEndpoint, requestBody);
+
+      expect(res.statusCode).to.equal(STATUS_CODE.UNPROCESSABLE);
+      expect(res.body).to.deep.equal(expectedResponse);
+    });
+
   });
 
   describe('PUT /posts', async () => {
