@@ -7,7 +7,7 @@ jobs:
     runs-on: ubuntu-latest
 
     env:
-      AUTH_TOKEN: 'Bearer 6bb315624af378344201d821690dc253bada1ae971e634d6be33b81412fc0ab2'
+      AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
 
     steps:
       - uses: actions/checkout@v2
