@@ -6,6 +6,9 @@ jobs:
   setup-and-run-tests:
     runs-on: ubuntu-latest
 
+    env:
+      AUTH_TOKEN: 'Bearer 6bb315624af378344201d821690dc253bada1ae971e634d6be33b81412fc0ab2'
+
     steps:
       - uses: actions/checkout@v2
       - name: Use node.js 21.x
