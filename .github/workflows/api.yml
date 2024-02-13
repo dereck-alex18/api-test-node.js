@@ -1,0 +1,25 @@
+name: API tests
+
+on: [pull_request]
+
+jobs:
+  setup-and-run-tests:
+    runs-on: ubuntu-latest
+
+    env:
+      AUTH_TOKEN: ${{ secrets.AUTH_TOKEN }}
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use node.js 21.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: "21.x"
+
+      # Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Run tests
+      - name: Run tests
+        run: npm test
